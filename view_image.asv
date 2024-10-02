@@ -1,0 +1,15 @@
+fin=fopen('t1_icbm_normal_1mm_pn0_rf0.rawb','r', 'l');
+I=fread(fin); 
+
+volume = reshape(I, 181, 217, 181);
+voxelsize = [1,1,1];
+
+zIdx = 100;
+coronal = volume(:,:,zIdx);
+
+sqz_coronal = squeeze(coronal);
+
+rotated_coronal = rot90(sqz_coronal, -1);
+
+image(rotated_coronal);
+axis image;
